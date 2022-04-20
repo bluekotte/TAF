@@ -15,6 +15,9 @@ public class ReadProperties {
         }
     }
 
+
+
+
     public static String getUrl() {
         return properties.getProperty("url");
     }
