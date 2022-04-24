@@ -5,10 +5,14 @@ import org.testng.annotations.Test;
 import java.util.List;
 
 public class CalcTestDivInt extends BaseTest{
+    // ToDo: Форматирование текста в классе Code -> Reformat Code
+    // ToDo: Название тестовых методов - переделать согласно https://dzone.com/articles/7-popular-unit-test-naming
     @Test
     public void testDivInt() {
         Assert.assertEquals(calculator.divInt(4, 2), 2, "неверно...");
     }
+
+    // Todo: Между методами должна быть пустая строка
     @Test (enabled = false)
     public void testDivInt1() {
         Assert.assertEquals(calculator.divInt(4, 2), 2, "неверно...");
@@ -42,4 +46,8 @@ public class CalcTestDivInt extends BaseTest{
         int size = list.size();
     }
 
+    // ToDo: Отсутствуют тесты деления на 0
+    // ToDo: Отсутствуют тесты с параметрами передаваемыми из TestNG.xml
+    // ToDo: Отсутствуют зависимые тесты
+    // ToDo: Отсутствуют приоритизированные тесты
 }
