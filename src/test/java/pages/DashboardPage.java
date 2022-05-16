@@ -12,6 +12,7 @@ public class DashboardPage extends BasePage {
 
     // Блок описания селекторов для элементов
     private By headerTitleLabelLocator = By.xpath("//div[contains(@class, 'content-header-title') and contains(text(), 'All Projects')]");
+    private By addProjectLocator = By.cssSelector(".sidebar-button");
 
     public DashboardPage(WebDriver driver) {
         super(driver);
@@ -31,5 +32,9 @@ public class DashboardPage extends BasePage {
     // Блок атомарных методов
     public WebElement getHeaderTitleLabel() {
         return driver.findElement(headerTitleLabelLocator);
+    }
+
+    public WebElement addProject() {
+        return driver.findElement(addProjectLocator);
     }
 }

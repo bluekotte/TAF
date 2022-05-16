@@ -2,6 +2,9 @@ package steps;
 
 import baseEntities.BaseStep;
 import org.openqa.selenium.WebDriver;
+import pages.AddMilestonePage;
+import pages.AddProjectPage;
+import pages.DashboardPage;
 import pages.ProjectsPage;
 
 public class NavigationStep extends BaseStep {
@@ -14,4 +17,13 @@ public class NavigationStep extends BaseStep {
         projectsPage.openPageByUrl();
         return projectsPage;
     }
+    public DashboardPage navigateToDashboardPage() {
+        dashboardPage.openPageByUrl();
+        return dashboardPage;
+    }
+    public AddMilestonePage navigateToAddMilestonePage() {
+        addMilestonePage.openPageByUrl();
+        return addMilestonePage;
+    }
+
 }

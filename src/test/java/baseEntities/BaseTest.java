@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import services.BrowsersService;
+import steps.AddMilestoneStep;
 import steps.LoginStep;
 import steps.NavigationStep;
 
@@ -12,6 +13,7 @@ public class BaseTest {
     protected WebDriver driver;
     protected LoginStep loginStep;
     protected NavigationStep navigationStep;
+    protected AddMilestoneStep addMilestoneStep;
 
     @BeforeMethod
     public void setup() {
@@ -19,6 +21,7 @@ public class BaseTest {
 
         loginStep = new LoginStep(driver);
         navigationStep = new NavigationStep(driver);
+        addMilestoneStep = new AddMilestoneStep(driver);
 
         driver.get(ReadProperties.getUrl());
     }
