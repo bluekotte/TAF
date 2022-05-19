@@ -8,9 +8,34 @@ import org.testng.annotations.Test;
 public class MilestonesTest extends BaseTest {
 
     @Test
-    public void addMilestone() {
-        loginStep.successLogin(ReadProperties.username(),ReadProperties.password());
+    public void addMilestoneTest() {
+        loginStep.successLogin(ReadProperties.username(), ReadProperties.password());
         navigationStep.navigateToAddMilestonePage();
-        addMilestoneStep.createMilestone("1","1","1","1",false);
+        addMilestoneStep.createMilestone("TestName", "Test", "1", "SomeText", false);
+    }
+
+    @Test(dependsOnMethods = "addMilestoneTest")
+    public void editMilestoneTest() {
+        loginStep.successLogin(ReadProperties.username(), ReadProperties.password());
+        navigationStep.navigateToMilestonePage();
+        navigationStep.editMilestone("TestName");
+        milestonesStep.editMilestone("TestName", "Test", "1", "SomeText", false);
+    }
+
+    @Test(dependsOnMethods = "editMilestoneTest")
+    public void readMilestoneTest() {
+        loginStep.successLogin(ReadProperties.username(), ReadProperties.password());
+        navigationStep.navigateToMilestonePage();
+        navigationStep.editMilestone("TestName");
+        milestonesStep.cancel();
+    }
+
+    @Test(dependsOnMethods = "readMilestoneTest")
+    public void deleteMilestoneTest() {
+        loginStep.successLogin(ReadProperties.username(), ReadProperties.password());
+        navigationStep.navigateToMilestonePage();
+        milestonesStep.deleteMilestone("TestName");
+
+
     }
 }

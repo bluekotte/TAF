@@ -6,7 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class AddMilestonePage extends BasePage {
-    private final static String pagePath = "/index.php?/milestones/add/3";
+    private final static String pagePath = "/index.php?/milestones/add/1";
 
     private By headerTitleLabelLocator = By.xpath("//div[contains(text(),'Add Milestone')]");
     private By nameMilestoneLocator = By.xpath("//input[@id='name']");

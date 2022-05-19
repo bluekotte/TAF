@@ -2,6 +2,7 @@ package steps;
 
 import baseEntities.BaseStep;
 import org.openqa.selenium.WebDriver;
+import pages.EditMilestonePage;
 import pages.MilestonesPage;
 
 public class AddMilestoneStep extends BaseStep {
@@ -15,6 +16,7 @@ public class AddMilestoneStep extends BaseStep {
                 description, MilestoneCompletedCheckBoxButton);
         return milestonesPage;
     }
+
 
     private void fillMilestone(String nameMilestone, String references, String parent,
                                String description, boolean MilestoneCompletedCheckBoxButton) {

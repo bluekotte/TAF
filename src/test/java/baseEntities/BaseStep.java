@@ -12,6 +12,7 @@ public class BaseStep {
     protected AllProjectsPage allProjectsPage;
     protected MilestonesPage milestonesPage;
     protected AddMilestonePage addMilestonePage;
+    protected EditMilestonePage editMilestonePage;
 
 
     public BaseStep(WebDriver driver) {
@@ -24,5 +25,6 @@ public class BaseStep {
         allProjectsPage = new AllProjectsPage(driver);
         milestonesPage = new MilestonesPage(driver);
         addMilestonePage = new AddMilestonePage(driver);
+        editMilestonePage = new EditMilestonePage(driver);
     }
 }

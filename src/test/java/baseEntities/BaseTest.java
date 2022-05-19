@@ -6,6 +6,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import services.BrowsersService;
 import steps.AddMilestoneStep;
+import steps.EditMilestonesStep;
 import steps.LoginStep;
 import steps.NavigationStep;
 
@@ -14,6 +15,7 @@ public class BaseTest {
     protected LoginStep loginStep;
     protected NavigationStep navigationStep;
     protected AddMilestoneStep addMilestoneStep;
+    protected EditMilestonesStep milestonesStep;
 
     @BeforeMethod
     public void setup() {
@@ -22,6 +24,7 @@ public class BaseTest {
         loginStep = new LoginStep(driver);
         navigationStep = new NavigationStep(driver);
         addMilestoneStep = new AddMilestoneStep(driver);
+        milestonesStep = new EditMilestonesStep(driver);
 
         driver.get(ReadProperties.getUrl());
     }
