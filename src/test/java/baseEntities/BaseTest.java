@@ -15,7 +15,7 @@ public class BaseTest {
     protected LoginStep loginStep;
     protected NavigationStep navigationStep;
     protected AddMilestoneStep addMilestoneStep;
-    protected EditMilestonesStep milestonesStep;
+    protected EditMilestonesStep editMilestonesStep;
 
     @BeforeMethod
     public void setup() {
@@ -24,7 +24,7 @@ public class BaseTest {
         loginStep = new LoginStep(driver);
         navigationStep = new NavigationStep(driver);
         addMilestoneStep = new AddMilestoneStep(driver);
-        milestonesStep = new EditMilestonesStep(driver);
+        editMilestonesStep = new EditMilestonesStep(driver);
 
         driver.get(ReadProperties.getUrl());
     }

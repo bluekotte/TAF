@@ -2,7 +2,6 @@ package steps;
 
 import baseEntities.BaseStep;
 import org.openqa.selenium.WebDriver;
-import pages.EditMilestonePage;
 import pages.MilestonesPage;
 
 public class EditMilestonesStep extends BaseStep {
@@ -12,15 +11,8 @@ public class EditMilestonesStep extends BaseStep {
     }
 
 
-    public MilestonesPage editMilestone(String nameMilestone, String references, String parent,
-                                              String description, boolean MilestoneCompletedCheckBoxButton) {
-        fillMilestone(nameMilestone, references, parent,
-                description, MilestoneCompletedCheckBoxButton);
-        return milestonesPage;
-    }
-
-    public MilestonesPage cancel() {
-        editMilestonePage.getCancelButton().click();
+    public MilestonesPage updateMilestone(String nameMilestone, String references, String parent, String description, boolean MilestoneCompletedCheckBoxButton) {
+        fillMilestone(nameMilestone, references, parent, description, MilestoneCompletedCheckBoxButton);
         return milestonesPage;
     }
 
@@ -31,8 +23,8 @@ public class EditMilestonesStep extends BaseStep {
         return milestonesPage;
     }
 
-    private void fillMilestone(String nameMilestone, String references, String parent,
-                               String description, boolean MilestoneCompletedCheckBoxButton) {
+
+    private void fillMilestone(String nameMilestone, String references, String parent, String description, boolean MilestoneCompletedCheckBoxButton) {
 
         //editMilestonePage.getNameMilestone().sendKeys(nameMilestone);
         editMilestonePage.getReferences().sendKeys(references);
@@ -43,8 +35,5 @@ public class EditMilestonesStep extends BaseStep {
         }
         editMilestonePage.getSaveButton().click();
     }
-
-
-
 
 }

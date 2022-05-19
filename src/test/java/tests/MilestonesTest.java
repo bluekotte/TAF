@@ -2,7 +2,6 @@ package tests;
 
 import baseEntities.BaseTest;
 import configuration.ReadProperties;
-import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class MilestonesTest extends BaseTest {
@@ -15,11 +14,11 @@ public class MilestonesTest extends BaseTest {
     }
 
     @Test(dependsOnMethods = "addMilestoneTest")
-    public void editMilestoneTest() {
+    public void updateMilestoneTest() {
         loginStep.successLogin(ReadProperties.username(), ReadProperties.password());
         navigationStep.navigateToMilestonePage();
         navigationStep.editMilestone("TestName");
-        milestonesStep.editMilestone("TestName", "Test", "1", "SomeText", false);
+        editMilestonesStep.updateMilestone("TestName", "Test", "1", "SomeText", false);
     }
 
     @Test(dependsOnMethods = "editMilestoneTest")
@@ -27,15 +26,12 @@ public class MilestonesTest extends BaseTest {
         loginStep.successLogin(ReadProperties.username(), ReadProperties.password());
         navigationStep.navigateToMilestonePage();
         navigationStep.editMilestone("TestName");
-        milestonesStep.cancel();
     }
 
     @Test(dependsOnMethods = "readMilestoneTest")
     public void deleteMilestoneTest() {
         loginStep.successLogin(ReadProperties.username(), ReadProperties.password());
         navigationStep.navigateToMilestonePage();
-        milestonesStep.deleteMilestone("TestName");
-
-
+        editMilestonesStep.deleteMilestone("TestName");
     }
 }
