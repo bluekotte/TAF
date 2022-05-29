@@ -29,27 +29,27 @@ public class MilestonesPage extends BasePage {
     }
 
     public WebElement getAddMilestoneButton() {
-        return driver.findElement(addMilestoneButtonLocator);
+        return waitsService.waitForExists(addMilestoneButtonLocator);
     }
 
     public WebElement editMilestoneButton(String milestoneName) {
-        return driver.findElement(By.xpath("//div/a[text()='" + milestoneName + "']/following::div/a[text()='Edit']"));
+        return waitsService.waitForExists(By.xpath("//div/a[text()='" + milestoneName + "']/following::div/a[text()='Edit']"));
     }
 
     public WebElement deleteMilestoneButton(String milestoneName) {
-        return driver.findElement(By.xpath("//div/a[text()='" + milestoneName + "']/following::a[@class='deleteLink']"));
+        return waitsService.waitForExists(By.xpath("//div/a[text()='" + milestoneName + "']/following::a[@class='deleteLink']"));
     }
 
     public WebElement getMessage() {
-        return driver.findElement(messageLocator);
+        return waitsService.waitForExists(messageLocator);
     }
 
     public WebElement getAcceptConfirmationButton() {
-        return driver.findElement(acceptConfirmationButtonLocator);
+        return waitsService.waitForExists(acceptConfirmationButtonLocator);
     }
 
     public WebElement getCancelConfirmationButton() {
-        return driver.findElement(cancelConfirmationButtonLocator);
+        return waitsService.waitForExists(cancelConfirmationButtonLocator);
     }
 
 }

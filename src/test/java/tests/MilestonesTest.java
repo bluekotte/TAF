@@ -51,7 +51,7 @@ public class MilestonesTest extends BaseTest {
     }
 
     @Test(dependsOnMethods = "readMilestoneAfterUpdateTest")
-    public void deleteMilestoneTest() throws InterruptedException {
+    public void deleteMilestoneTest() {
         loginStep.successLogin(ReadProperties.username(), ReadProperties.password());
         navigationStep.navigateToMilestonePage();
         Assert.assertEquals(editMilestonesStep.deleteMilestone("Test_2").getMessage().getText(),

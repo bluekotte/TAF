@@ -20,7 +20,7 @@ public class AllProjectsPage extends BasePage {
     }
 
     public WebElement getProjectNameButton(String projectName) {
-        return driver.findElement(By.xpath("//a[contains(text(),'"+projectName+"')]"));
+        return waitsService.waitForExists(By.xpath("//a[contains(text(),'"+projectName+"')]"));
     }
 
 }

@@ -26,35 +26,35 @@ public class AddProjectPage extends BasePage {
     }
 
     public WebElement getNameInput() {
-        return driver.findElement(nameInputLocator);
+        return waitsService.waitForExists(nameInputLocator);
     }
 
     public WebElement getAnnouncementInput() {
-        return driver.findElement(announcementInputLocator);
+        return waitsService.waitForExists(announcementInputLocator);
     }
 
     public WebElement getAnnouncementCheckBox() {
-        return driver.findElement(announcementCheckBoxLocator);
+        return waitsService.waitForExists(announcementCheckBoxLocator);
     }
 
     public WebElement getSingleSuiteModeRadioButton() {
-        return driver.findElement(singleSuiteModeRadioButtonLocator);
+        return waitsService.waitForExists(singleSuiteModeRadioButtonLocator);
     }
 
     public WebElement getBaselineSuiteModeRadioButton() {
-        return driver.findElement(baselineSuiteModeRadioButtonLocator);
+        return waitsService.waitForExists(baselineSuiteModeRadioButtonLocator);
     }
 
     public WebElement getMultiSuiteModeRadioButton() {
-        return driver.findElement(multiSuiteModeRadioButtonLocator);
+        return waitsService.waitForExists(multiSuiteModeRadioButtonLocator);
     }
 
     public WebElement getProjectCompletedCheckBoxButton() {
-        return driver.findElement(projectCompletedCheckBoxButtonLocator);
+        return waitsService.waitForExists(projectCompletedCheckBoxButtonLocator);
     }
 
     public WebElement getAddProjectButton() {
-        return driver.findElement(addProjectButtonLocator);
+        return waitsService.waitForExists(addProjectButtonLocator);
     }
 
 }

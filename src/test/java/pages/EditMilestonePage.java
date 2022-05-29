@@ -20,10 +20,10 @@ public class EditMilestonePage extends AddMilestonePage {
     }
 
     public WebElement getSaveButton() {
-        return driver.findElement(saveButtonLocator);
+        return waitsService.waitForExists(saveButtonLocator);
     }
 
     public WebElement getCancelButton() {
-        return driver.findElement(cancelButtonLocator);
+        return waitsService.waitForExists(cancelButtonLocator);
     }
 }

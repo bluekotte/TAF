@@ -28,19 +28,19 @@ public class AddMilestonePage extends BasePage {
     }
 
     public WebElement getNameMilestone() {
-        return driver.findElement(nameMilestoneLocator);
+        return waitsService.waitForExists(nameMilestoneLocator);
     }
     public WebElement getReferences() {
-        return driver.findElement(referencesLocator);
+        return waitsService.waitForExists(referencesLocator);
     }
     public WebElement getDescription() {
-        return driver.findElement(descriptionLocator);
+        return waitsService.waitForExists(descriptionLocator);
     }
     public WebElement getMilestoneCompletedCheckBoxButton() {
-        return driver.findElement(milestoneCompletedCheckBoxButtonLocator);
+        return waitsService.waitForExists(milestoneCompletedCheckBoxButtonLocator);
     }
     public WebElement getAddMilestoneButton() {
-        return driver.findElement(addMilestoneButtonLocator);
+        return waitsService.waitForExists(addMilestoneButtonLocator);
     }
 
     public void openPageByUrl() {

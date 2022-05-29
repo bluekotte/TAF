@@ -18,10 +18,9 @@ public class EditMilestonesStep extends BaseStep {
     }
 
 
-    public MilestonesPage deleteMilestone(String nameMilestone) throws InterruptedException {
+    public MilestonesPage deleteMilestone(String nameMilestone) {
         milestonesPage.deleteMilestoneButton(nameMilestone).click();
         milestonesPage.getAcceptConfirmationButton().click();
-        Thread.sleep(2000);
         return milestonesPage;
     }
 
