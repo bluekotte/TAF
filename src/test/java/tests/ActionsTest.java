@@ -9,13 +9,14 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import services.WaitsService;
 
+import java.io.File;
 import java.time.Duration;
 import java.util.List;
 
 public class ActionsTest extends BaseTest {
 
     @Test
-    public void hoverTest() throws InterruptedException {
+    public void hoverTest() {
         driver.get("http://the-internet.herokuapp.com/hovers");
 
         Actions actions = new Actions(driver);
@@ -30,20 +31,21 @@ public class ActionsTest extends BaseTest {
     }
 
     @Test
-    public void fileUploadTest() throws InterruptedException {
+    public void fileUploadTest() {
         driver.get("http://the-internet.herokuapp.com/upload");
 
         WaitsService wait = new WaitsService(driver, Duration.ofSeconds(10));
 
         WebElement fileUploadPath = wait.waitForExists(By.id("file-upload"));
-        String pathToFile = ActionsTest.class.getClassLoader().getResource("download.png").getPath();
-        System.out.println(pathToFile);
+        String resourceName = "download.png";
+
+        ClassLoader classLoader = getClass().getClassLoader();
+        File file = new File(classLoader.getResource(resourceName).getFile());
+        String pathToFile = file.getAbsolutePath();
+
         fileUploadPath.sendKeys(pathToFile);
         wait.waitForExists(By.id("file-submit")).submit();
-
-        Thread.sleep(5000);
-
-        //переделать
+        Assert.assertTrue(wait.waitForVisibilityLocatedBy(By.xpath("//div/h3[text()='File Uploaded!']")).isDisplayed());
     }
 
     @Test
@@ -104,8 +106,5 @@ public class ActionsTest extends BaseTest {
 
         Assert.assertTrue(wait.waitForVisibilityLocatedBy(By.xpath("//form/p")).isDisplayed());
         Assert.assertTrue(input.isEnabled());
-
-
-
     }
 }
