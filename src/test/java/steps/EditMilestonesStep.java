@@ -11,25 +11,27 @@ public class EditMilestonesStep extends BaseStep {
     }
 
 
-    public MilestonesPage updateMilestone(String nameMilestone, String references, String parent, String description, boolean MilestoneCompletedCheckBoxButton) {
-        fillMilestone(nameMilestone, references, parent, description, MilestoneCompletedCheckBoxButton);
+    public MilestonesPage updateMilestone(String nameMilestone, String references, String description,
+                                          boolean MilestoneCompletedCheckBoxButton) {
+        fillMilestone(nameMilestone, references, description, MilestoneCompletedCheckBoxButton);
         return milestonesPage;
     }
 
 
-    public MilestonesPage deleteMilestone(String nameMilestone) {
+    public MilestonesPage deleteMilestone(String nameMilestone) throws InterruptedException {
         milestonesPage.deleteMilestoneButton(nameMilestone).click();
         milestonesPage.getAcceptConfirmationButton().click();
+        Thread.sleep(2000);
         return milestonesPage;
     }
 
 
-    private void fillMilestone(String nameMilestone, String references, String parent, String description, boolean MilestoneCompletedCheckBoxButton) {
+    private void fillMilestone(String nameMilestone, String references, String description,
+                               boolean MilestoneCompletedCheckBoxButton) {
         editMilestonePage.getNameMilestone().clear();
         editMilestonePage.getNameMilestone().sendKeys(nameMilestone);
         editMilestonePage.getReferences().clear();
         editMilestonePage.getReferences().sendKeys(references);
-        //addMilestonePage.getParent().sendKeys(parent);
         editMilestonePage.getDescription().clear();
         editMilestonePage.getDescription().sendKeys(description);
         if (MilestoneCompletedCheckBoxButton) {
@@ -38,19 +40,15 @@ public class EditMilestonesStep extends BaseStep {
         editMilestonePage.getSaveButton().click();
     }
 
-    public String getMilestoneName(){
+    public String getMilestoneName() {
         return editMilestonePage.getNameMilestone().getAttribute("value");
     }
 
-    public String getParent(){
-        return editMilestonePage.getParent().getAttribute("value");
-    }
-
-    public String getReference(){
+    public String getReference() {
         return editMilestonePage.getReferences().getText();
     }
 
-    public String getDescription(){
+    public String getDescription() {
         return editMilestonePage.getDescription().getText();
     }
 
