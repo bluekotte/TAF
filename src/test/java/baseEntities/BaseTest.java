@@ -29,8 +29,8 @@ public class BaseTest {
 
     @BeforeTest
     public void prepareData() throws IOException {
-        Reader reader = Files.newBufferedReader(Paths.get("projectResult.json"));
-        mainProject = new Gson().fromJson(reader, Project.class);
+        /*Reader reader = Files.newBufferedReader(Paths.get("projectResult.json"));
+        mainProject = new Gson().fromJson(reader, Project.class);*/
     }
 
     @BeforeMethod
