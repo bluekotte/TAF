@@ -1,6 +1,7 @@
 package pages;
 
 import baseEntities.BasePage;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -14,6 +15,7 @@ public class AddMilestonePage extends BasePage {
     private By descriptionLocator = By.xpath("//div[@id='description_display']");
     private By milestoneCompletedCheckBoxButtonLocator = By.xpath("//input[@id='is_completed']");
     private By addMilestoneButtonLocator = By.xpath("//button[@id='accept']");
+
 
 
 
@@ -45,6 +47,27 @@ public class AddMilestonePage extends BasePage {
 
     public void openPageByUrl() {
         super.openPageByUrl(pagePath);
+    }
+
+    // Блок комплексных методов
+
+
+    public MilestonesPage createMilestone(String nameMilestone, String references,
+                                          String description, boolean MilestoneCompletedCheckBoxButton) {
+        fillMilestone(nameMilestone, references, description, MilestoneCompletedCheckBoxButton);
+        return new MilestonesPage(driver);
+    }
+
+    @Step("add milestone with name {nameMilestone}")
+    private void fillMilestone(String nameMilestone, String references,
+                               String description, boolean MilestoneCompletedCheckBoxButton) {
+        getNameMilestone().sendKeys(nameMilestone);
+        getReferences().sendKeys(references);
+        getDescription().sendKeys(description);
+        if (MilestoneCompletedCheckBoxButton) {
+            getMilestoneCompletedCheckBoxButton().click();
+        }
+        getAddMilestoneButton().click();
     }
 
 }

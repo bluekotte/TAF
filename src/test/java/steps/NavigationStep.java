@@ -10,9 +10,9 @@ public class NavigationStep extends BaseStep {
         super(driver);
     }
 
-    public ProjectsPage navigateToProjectsPage() {
-        projectsPage.openPageByUrl();
-        return projectsPage;
+    public ProjectPage navigateToProjectsPage() {
+        projectPage.openPageByUrl();
+        return projectPage;
     }
     public DashboardPage navigateToDashboardPage() {
         dashboardPage.openPageByUrl();

@@ -37,4 +37,14 @@ public class DashboardPage extends BasePage {
     public WebElement addProject() {
         return waitsService.waitForExists(addProjectLocator);
     }
+
+    public WebElement getProjectByName(String projectName) {
+        return waitsService.waitForExists(By.xpath("//a[contains(text(),'" + projectName + "')]"));
+    }
+
+    // Блок комплексных методов
+    public ProjectPage projectSelection(String projectName) {
+        getProjectByName(projectName).click();
+        return new ProjectPage(driver);
+    }
 }

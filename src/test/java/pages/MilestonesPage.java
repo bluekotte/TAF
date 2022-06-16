@@ -14,6 +14,7 @@ public class MilestonesPage extends BasePage {
     private By cancelConfirmationButtonLocator = By.xpath("//div[@id='deleteDialog']/div/a[contains(text(),'Cancel')]");
     private By messageLocator = By.xpath("//div[contains(@class,'message-success')]");
 
+
     public MilestonesPage(WebDriver driver) {
         super(driver);
     }
@@ -50,6 +51,13 @@ public class MilestonesPage extends BasePage {
 
     public WebElement getCancelConfirmationButton() {
         return waitsService.waitForExists(cancelConfirmationButtonLocator);
+    }
+
+    // Блок комплексных методов
+
+    public AddMilestonePage addMilestone() {
+        getAddMilestoneButton().click();
+        return new AddMilestonePage(driver);
     }
 
 }

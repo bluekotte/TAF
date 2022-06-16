@@ -2,7 +2,7 @@ package steps;
 
 import baseEntities.BaseStep;
 import org.openqa.selenium.WebDriver;
-import pages.ProjectsPage;
+import pages.ProjectPage;
 
 public class AddProjectStep extends BaseStep {
 
@@ -10,11 +10,11 @@ public class AddProjectStep extends BaseStep {
         super(driver);
     }
 
-    public ProjectsPage createProject(String projectName, String announcement, boolean announcementCheckBoxButton,
-                                      String suiteMode, boolean projectCompletedCheckBoxButton) {
+    public ProjectPage createProject(String projectName, String announcement, boolean announcementCheckBoxButton,
+                                     String suiteMode, boolean projectCompletedCheckBoxButton) {
         fillProject(projectName, announcement, announcementCheckBoxButton,
                 suiteMode, projectCompletedCheckBoxButton);
-        return projectsPage;
+        return projectPage;
     }
 
     private void fillProject(String projectName, String announcement, boolean announcementCheckBoxButton,

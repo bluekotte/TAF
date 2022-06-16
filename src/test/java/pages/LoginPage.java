@@ -34,4 +34,28 @@ public class LoginPage extends BasePage {
     }
     public WebElement getErrorTextElement() { return waitsService.waitForExists(errorTextLocator);
     }
+
+    // Блок комплексных методов
+    public DashboardPage successLogin(String email, String psw) {
+        login(email, psw);
+
+        return new DashboardPage(driver);
+    }
+
+    public LoginPage incorrectLogin(String email, String psw) {
+        login(email, psw);
+
+        return this;
+    }
+
+    private void login(String email, String psw) {
+        getEmailInput().sendKeys(email);
+        getPswInput().sendKeys(psw);
+        getLogInButton().click();
+    }
+
+    public LoginPage logout() {
+
+        return this;
+    }
 }
