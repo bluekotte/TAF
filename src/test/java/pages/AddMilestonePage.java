@@ -1,21 +1,30 @@
 package pages;
 
 import baseEntities.BasePage;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
 public class AddMilestonePage extends BasePage {
     private final static String pagePath = "/index.php?/milestones/add/1";
 
-    private By headerTitleLabelLocator = By.xpath("//div[contains(text(),'Add Milestone')]");
-    private By nameMilestoneLocator = By.xpath("//input[@id='name']");
-    private By referencesLocator = By.xpath("//input[@id='reference']");
-    private By descriptionLocator = By.xpath("//div[@id='description_display']");
-    private By milestoneCompletedCheckBoxButtonLocator = By.xpath("//input[@id='is_completed']");
-    private By addMilestoneButtonLocator = By.xpath("//button[@id='accept']");
+    @FindBy(xpath = "//div[contains(text(),'Add Milestone')]")
+    public WebElement headerTitleLabelLocator;
 
+    @FindBy(xpath = "//input[@id='name']")
+    public WebElement nameMilestoneLocator;
 
+    @FindBy(xpath = "//input[@id='reference']")
+    public WebElement referencesLocator;
+
+    @FindBy(xpath = "//div[@id='description_display']")
+    public WebElement descriptionLocator;
+
+    @FindBy(xpath = "//input[@id='is_completed']")
+    public WebElement milestoneCompletedCheckBoxButtonLocator;
+
+    @FindBy(xpath = "//button[@id='accept']")
+    public WebElement addMilestoneButtonLocator;
 
 
     public AddMilestonePage(WebDriver driver) {
@@ -23,28 +32,11 @@ public class AddMilestonePage extends BasePage {
     }
 
     @Override
-    protected By getPageIdentifier() {
+    protected WebElement getPageIdentifier() {
         return headerTitleLabelLocator;
-    }
-
-    public WebElement getNameMilestone() {
-        return waitsService.waitForExists(nameMilestoneLocator);
-    }
-    public WebElement getReferences() {
-        return waitsService.waitForExists(referencesLocator);
-    }
-    public WebElement getDescription() {
-        return waitsService.waitForExists(descriptionLocator);
-    }
-    public WebElement getMilestoneCompletedCheckBoxButton() {
-        return waitsService.waitForExists(milestoneCompletedCheckBoxButtonLocator);
-    }
-    public WebElement getAddMilestoneButton() {
-        return waitsService.waitForExists(addMilestoneButtonLocator);
     }
 
     public void openPageByUrl() {
         super.openPageByUrl(pagePath);
     }
-
 }

@@ -4,14 +4,23 @@ import baseEntities.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
 public class MilestonesPage extends BasePage {
     private final static String pagePath = "/index.php?/milestones/overview/1";
 
-    private By headerTitleLabelLocator = By.xpath("//div[contains(text(),'Milestones')]");
-    private By addMilestoneButtonLocator = By.id("navigation-milestones-add");
-    private By acceptConfirmationButtonLocator = By.xpath("//div[@id='deleteDialog']/div/a[contains(text(),'OK')]");
-    private By cancelConfirmationButtonLocator = By.xpath("//div[@id='deleteDialog']/div/a[contains(text(),'Cancel')]");
+    @FindBy(xpath = "//div[contains(text(),'Milestones')]")
+    public  WebElement headerTitleLabelLocator;
+
+    @FindBy(id = "navigation-milestones-add")
+    public WebElement addMilestoneButtonLocator;
+
+    @FindBy(xpath = "//div[@id='deleteDialog']/div/a[contains(text(),'OK')]")
+    public WebElement acceptConfirmationButtonLocator;
+
+    @FindBy(xpath = "//div[@id='deleteDialog']/div/a[contains(text(),'Cancel')]")
+    public WebElement cancelConfirmationButtonLocator;
+
     private By messageLocator = By.xpath("//div[contains(@class,'message-success')]");
 
     public MilestonesPage(WebDriver driver) {
@@ -20,16 +29,12 @@ public class MilestonesPage extends BasePage {
 
 
     @Override
-    protected By getPageIdentifier() {
+    protected WebElement getPageIdentifier() {
         return headerTitleLabelLocator;
     }
 
     public void openPageByUrl() {
         super.openPageByUrl(pagePath);
-    }
-
-    public WebElement getAddMilestoneButton() {
-        return waitsService.waitForExists(addMilestoneButtonLocator);
     }
 
     public WebElement editMilestoneButton(String milestoneName) {
@@ -42,14 +47,6 @@ public class MilestonesPage extends BasePage {
 
     public WebElement getMessage() {
         return waitsService.waitForExists(messageLocator);
-    }
-
-    public WebElement getAcceptConfirmationButton() {
-        return waitsService.waitForExists(acceptConfirmationButtonLocator);
-    }
-
-    public WebElement getCancelConfirmationButton() {
-        return waitsService.waitForExists(cancelConfirmationButtonLocator);
     }
 
 }

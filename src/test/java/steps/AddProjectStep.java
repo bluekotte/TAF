@@ -19,23 +19,23 @@ public class AddProjectStep extends BaseStep {
 
     private void fillProject(String projectName, String announcement, boolean announcementCheckBoxButton,
                              String suiteMode, boolean projectCompletedCheckBoxButton) {
-        addProjectPage.getNameInput().sendKeys(projectName);
-        addProjectPage.getAnnouncementInput().sendKeys(announcement);
+        addProjectPage.nameInputLocator.sendKeys(projectName);
+        addProjectPage.announcementInputLocator.sendKeys(announcement);
         if (announcementCheckBoxButton) {
-            addProjectPage.getAnnouncementCheckBox().click();
+            addProjectPage.announcementCheckBoxLocator.click();
         }
         switch (suiteMode) {
             case ("suite_mode_single"):
-                addProjectPage.getSingleSuiteModeRadioButton().click();
+                addProjectPage.singleSuiteModeRadioButtonLocator.click();
             case ("suite_mode_single_baseline"):
-                addProjectPage.getBaselineSuiteModeRadioButton().click();
+                addProjectPage.baselineSuiteModeRadioButtonLocator.click();
             case ("suite_mode_multi"):
-                addProjectPage.getMultiSuiteModeRadioButton().click();
+                addProjectPage.multiSuiteModeRadioButtonLocator.click();
         }
         if (projectCompletedCheckBoxButton) {
-            addProjectPage.getProjectCompletedCheckBoxButton().click();
+            addProjectPage.projectCompletedCheckBoxButtonLocator.click();
         }
-        addProjectPage.getAddProjectButton().click();
+        addProjectPage.addProjectButtonLocator.click();
     }
 
 

@@ -3,11 +3,18 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
 public class EditMilestonePage extends AddMilestonePage {
-    private By headerTitleLabelLocator = By.cssSelector(".content-header-title.page_title");
-    private By saveButtonLocator = By.cssSelector("button[id=accept]");
-    private By cancelButtonLocator = By.xpath("//div[contains(@class,'form-buttons')]/a");
+
+    @FindBy(css = ".content-header-title.page_title")
+    public WebElement headerTitleLabelLocator;
+
+    @FindBy(css = "button[id=accept]")
+    public WebElement saveButtonLocator;
+
+    @FindBy(xpath = "//div[contains(@class,'form-buttons')]/a")
+    public WebElement cancelButtonLocator;
 
 
     public EditMilestonePage(WebDriver driver) {
@@ -15,15 +22,7 @@ public class EditMilestonePage extends AddMilestonePage {
     }
 
     @Override
-    protected By getPageIdentifier() {
+    protected WebElement getPageIdentifier() {
         return headerTitleLabelLocator;
-    }
-
-    public WebElement getSaveButton() {
-        return waitsService.waitForExists(saveButtonLocator);
-    }
-
-    public WebElement getCancelButton() {
-        return waitsService.waitForExists(cancelButtonLocator);
     }
 }

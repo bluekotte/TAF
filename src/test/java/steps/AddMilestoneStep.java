@@ -19,12 +19,12 @@ public class AddMilestoneStep extends BaseStep {
     @Step("add milestone with name {nameMilestone}")
     private void fillMilestone(String nameMilestone, String references,
                                String description, boolean MilestoneCompletedCheckBoxButton) {
-        addMilestonePage.getNameMilestone().sendKeys(nameMilestone);
-        addMilestonePage.getReferences().sendKeys(references);
-        addMilestonePage.getDescription().sendKeys(description);
+        addMilestonePage.nameMilestoneLocator.sendKeys(nameMilestone);
+        addMilestonePage.referencesLocator.sendKeys(references);
+        addMilestonePage.descriptionLocator.sendKeys(description);
         if (MilestoneCompletedCheckBoxButton) {
-            addMilestonePage.getMilestoneCompletedCheckBoxButton().click();
+            addMilestonePage.milestoneCompletedCheckBoxButtonLocator.click();
         }
-        addMilestonePage.getAddMilestoneButton().click();
+        addMilestonePage.addMilestoneButtonLocator.click();
     }
 }

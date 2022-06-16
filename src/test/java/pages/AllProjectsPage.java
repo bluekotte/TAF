@@ -4,9 +4,12 @@ import baseEntities.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
 public class AllProjectsPage extends BasePage {
-    private By headerTitleLabelLocator = By.xpath("//div[contains(text(),'All Projects')]");
+
+    @FindBy(xpath = "//div[contains(text(),'All Projects')]")
+    public WebElement headerTitleLabelLocator;
 
 
     public AllProjectsPage(WebDriver driver) {
@@ -15,7 +18,7 @@ public class AllProjectsPage extends BasePage {
 
 
     @Override
-    protected By getPageIdentifier() {
+    protected WebElement getPageIdentifier() {
         return headerTitleLabelLocator;
     }
 

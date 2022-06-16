@@ -20,35 +20,35 @@ public class EditMilestonesStep extends BaseStep {
 
     public MilestonesPage deleteMilestone(String nameMilestone) {
         milestonesPage.deleteMilestoneButton(nameMilestone).click();
-        milestonesPage.getAcceptConfirmationButton().click();
+        milestonesPage.acceptConfirmationButtonLocator.click();
         return milestonesPage;
     }
 
 
     private void fillMilestone(String nameMilestone, String references, String description,
                                boolean MilestoneCompletedCheckBoxButton) {
-        editMilestonePage.getNameMilestone().clear();
-        editMilestonePage.getNameMilestone().sendKeys(nameMilestone);
-        editMilestonePage.getReferences().clear();
-        editMilestonePage.getReferences().sendKeys(references);
-        editMilestonePage.getDescription().clear();
-        editMilestonePage.getDescription().sendKeys(description);
+        editMilestonePage.nameMilestoneLocator.clear();
+        editMilestonePage.nameMilestoneLocator.sendKeys(nameMilestone);
+        editMilestonePage.referencesLocator.clear();
+        editMilestonePage.referencesLocator.sendKeys(references);
+        editMilestonePage.descriptionLocator.clear();
+        editMilestonePage.descriptionLocator.sendKeys(description);
         if (MilestoneCompletedCheckBoxButton) {
-            editMilestonePage.getMilestoneCompletedCheckBoxButton().click();
+            editMilestonePage.milestoneCompletedCheckBoxButtonLocator.click();
         }
-        editMilestonePage.getSaveButton().click();
+        editMilestonePage.saveButtonLocator.click();
     }
 
     public String getMilestoneName() {
-        return editMilestonePage.getNameMilestone().getAttribute("value");
+        return editMilestonePage.nameMilestoneLocator.getAttribute("value");
     }
 
     public String getReference() {
-        return editMilestonePage.getReferences().getText();
+        return editMilestonePage.referencesLocator.getText();
     }
 
     public String getDescription() {
-        return editMilestonePage.getDescription().getText();
+        return editMilestonePage.descriptionLocator.getText();
     }
 
 }

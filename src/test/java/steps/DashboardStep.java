@@ -15,6 +15,6 @@ public class DashboardStep extends BaseStep {
     }
 
     private void addProject() {
-        dashboardPage.addProject().click();
+        dashboardPage.addProjectLocator.click();
     }
 }
