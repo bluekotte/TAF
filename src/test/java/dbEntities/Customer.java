@@ -1,23 +1,25 @@
-package models;
+package dbEntities;
 
+import javax.persistence.*;
+import javax.persistence.Table;
 
-import java.util.Objects;
-
-
+@Entity
+@Table(name = "Customers")
 public class Customer {
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-
+    @Column(name = "FirstName")
     public String firstName;
 
-
+    @Column(name = "LastName")
     public String lastName;
 
-
+    @Column(name = "Email")
     public String email;
 
-
+    @Column(name = "Age")
     public Integer age;
 
     public Customer() {
@@ -80,17 +82,5 @@ public class Customer {
                 ", age=" + age +
                 '}';
     }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Customer customer = (Customer) o;
-        return Objects.equals(getFirstName(), customer.getFirstName()) && Objects.equals(getLastName(), customer.getLastName()) && Objects.equals(getEmail(), customer.getEmail()) && Objects.equals(getAge(), customer.getAge());
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(getFirstName(), getLastName(), getEmail(), getAge());
-    }
 }
+
