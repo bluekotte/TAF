@@ -29,7 +29,7 @@ public class NavigationStep extends BaseStep {
     }
 
     public EditMilestonePage editMilestone(String nameMilestone){
-        milestonesPage.editMilestoneButton(nameMilestone).click();
+        milestonesPage.getEditMilestoneButton(nameMilestone).click();
         return editMilestonePage;
     }
 

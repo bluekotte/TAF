@@ -33,7 +33,7 @@ public class MilestonesPage extends BasePage {
         return waitsService.waitForExists(addMilestoneButtonLocator);
     }
 
-    public WebElement editMilestoneButton(String milestoneName) {
+    public WebElement getEditMilestoneButton(String milestoneName) {
         return waitsService.waitForExists(By.xpath("//div/a[text()='" + milestoneName + "']/following::div/a[text()='Edit']"));
     }
 
@@ -58,6 +58,11 @@ public class MilestonesPage extends BasePage {
     public AddMilestonePage addMilestone() {
         getAddMilestoneButton().click();
         return new AddMilestonePage(driver);
+    }
+
+    public EditMilestonePage editMilestonePage() {
+        getEditMilestoneButton("test_1").click();
+        return new EditMilestonePage(driver);
     }
 
 }

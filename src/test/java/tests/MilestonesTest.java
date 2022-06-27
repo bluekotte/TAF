@@ -5,6 +5,7 @@ import configuration.ReadProperties;
 import io.qameta.allure.*;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pages.LoginPage;
 
 @Epic("Milestone Tests")
 @Feature("CRUD Milestone")
@@ -14,11 +15,14 @@ public class MilestonesTest extends BaseTest {
     @Description("Add Milestone")
     @Severity(SeverityLevel.BLOCKER)
     public void addMilestoneTest() {
-        loginStep.successLogin(ReadProperties.username(), ReadProperties.password());
-        navigationStep.navigateToAddMilestonePage();
-        Assert.assertEquals(addMilestoneStep.createMilestone("Test_1", "reference_1",
-                        "description_1",
-                        false).getMessage().getText(),
+        Assert.assertEquals(new LoginPage(driver)
+                        .successLogin(ReadProperties.username(), ReadProperties.password())
+                        .projectSelection("Test Project")
+                        .openMilestone()
+                        .addMilestone()
+                        .createMilestone("test_1",
+                                "reference_1", "desription_1",
+                                false).getMessage().getText(),
                 "Successfully added the new milestone.");
     }
 
