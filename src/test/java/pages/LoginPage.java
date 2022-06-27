@@ -1,43 +1,62 @@
 package pages;
 
-import baseEntities.BasePage;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import wrappers.Button;
-import wrappers.UIElement;
+import com.codeborne.selenide.SelenideElement;
+import configuration.ReadProperties;
+import io.qameta.allure.Step;
 
-public class LoginPage extends BasePage {
-    // Блок описания селекторов для элементов
-    private By emailInputLocator = By.id("name");
-    private By pswInputLocator = By.id("password");
-    private By logInButtonLocator = By.id("button_primary");
-    private By errorTextLocator = By.className("error-text");
+import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.open;
 
-    // Блок иницализации
-    public LoginPage(WebDriver driver) {
-        super(driver);
+public class LoginPage {
+
+
+    // Locators
+    private SelenideElement email = $("[type='text']");
+    private SelenideElement psw = $("[type='password']");
+    private SelenideElement loginButton = $(".button.is-vcentered");
+
+    private SelenideElement incorrectEmail = $(".notification.is-danger.is-small");
+    private SelenideElement incorrectPsw = $(".notification.is-danger");
+
+
+    // corpuscular methods
+    public SelenideElement getEmail() {
+        return email;
     }
 
-    @Override
-    protected By getPageIdentifier() {
-        return emailInputLocator;
+    public SelenideElement getPsw() {
+        return psw;
     }
 
-    // Блок атомарных методов
-    public UIElement getEmailInput() {
-        return new UIElement(driver, emailInputLocator);
+    public SelenideElement getButton() {
+        return loginButton;
     }
 
-    public WebElement getPswInput() {
-        return waitsService.waitForExists(pswInputLocator);
+    public SelenideElement getIncorrectEmail() {
+        return incorrectEmail;
     }
 
-    public Button getLogInButton() {
-        return new Button(driver, logInButtonLocator);
+    public SelenideElement getIncorrectPsw() {
+        return incorrectPsw;
     }
 
-    public WebElement getErrorTextElement() {
-        return waitsService.waitForExists(errorTextLocator);
+
+    //complex methods
+    public LoginPage inCorrectLogin(String inCorrectEmail, String incorrectPsw) {
+        login(inCorrectEmail, incorrectPsw);
+        return this;
+    }
+
+
+    public FeedPage successLogin(String email, String psw) {
+        login(email, psw);
+        return new FeedPage();
+    }
+
+    public void login(String email, String psw){
+        open(ReadProperties.getUrl());
+        getEmail().setValue(email);
+        getPsw().setValue(psw);
+        loginButton.click();
     }
 }
